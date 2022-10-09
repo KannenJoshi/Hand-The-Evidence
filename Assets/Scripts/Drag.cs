@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Drag : MonoBehaviour
+public class Drag : MonoBehaviour, IDragHandler
 {
     // https://www.youtube.com/watch?v=sXTAzcxNqv0
     [SerializeField] private Canvas canvas;
 
-    public void DragHandler(BaseEventData data)
+    public void OnDrag(PointerEventData eventData)
     {
-        PointerEventData pointerData = (PointerEventData) data;
+        PointerEventData pointerData = (PointerEventData) eventData;
 
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform) canvas.transform, pointerData.position,
